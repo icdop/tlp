@@ -1,0 +1,27 @@
+2017/10/25 Albert Li 
+  Create the repository and checkin sample perl code from Haiyong
+
+2017/11/01 Albert Li
+  Add the following directory 
+	sample/   - sample empty kit directory
+	packages/ - tar file created from kits in sample/
+	csh/      - demo code using csh/awk
+	run/      - testcase
+
+2017/11/02 Albert Li
+  Add gawk in csh/, to resolve old version issue in system
+  Add dcm_install.csh/dcm_install.awk
+
+2017/11/04 Albert Li
+  Add gawk executable for Cygwin and Linux
+
+2017/11/07 Albert Li
+  Add dcm_help to view all documents
+
+2020/04/10 Albert Li
+  Change package name
+  DCM ==> TLP
+  dcm ==> tcp
+  ICFDK ==> TECHLIB
+  1222.2 ==> T28HPC
+  x1r0 ==> 0p5

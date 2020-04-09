@@ -1,0 +1,22 @@
+TLP	PACKAGE	1.0
+;TLP	MODE	TEST
+
+KIT	NODE	T28HPC
+KIT	PDK	0p5
+KIT	TOPDIR	pdk222_r101
+
+REQUIRE KIT	T28HPC/0p5/FDK/PDK	TOPDIR	pdk222_r101
+
+;-----	-----	-----	-----	-------	------------------------------	----------------------	---------------	----------------	-----------------------------------------
+;PACK	NODE	PDK	GROUP	TYPE	SKU				TOPDIR			VERSION		REQUIRE			DIRECTORY
+;-----	-----	-----	-----	-------	------------------------------	----------------------	---------------	-----------------	-----------------------------------------
+FULL	T28HPC	0p5	FDK	PDK	PT28HPCPDK_r1.0.1		pdk222_r101		r1.0.1		-			collateral/pdk222_r101
+PATCH	T28HPC	0p5	FDK	PDK	PT28HPCPDK_r1.0hf1		pdk222_r101		r1.0HF1		PT28HPCPDK_r1.0.1	collateral_patch/pdk222_r10hf1
+PATCH	T28HPC	0p5	FDK	PDK	PT28HPCPDK_r1.0hf2		pdk222_r101		r1.0HF2		PT28HPCPDK_r1.0hf1	collateral_patch/pdk222_r10hf2
+PATCH	T28HPC	0p5	FDK	PDK	PT28HPCPDK_r1.0hf3		pdk222_r101		r1.0HF3		PT28HPCPDK_r1.0hf2	collateral_patch/pdk222_r10hf3
+;PATCH	T28HPC	0p5	FDK	PDK	PT28HPCPDK_r1.0hf4		pdk222_r101		r1.0HF4		PT28HPCPDK_r1.0hf3	collateral_patch/pdk222_r10hf4
+
+FULL	T28HPC	0p5	FDK	PDK	PT28HPCPDK_r1.0HF4		pdk222_r101		r1.0HF4		-			collateral/pdk222_r10HF4
+PATCH	T28HPC	0p5	FDK	PDK	PT28HPCPDK_r1.0hf5		pdk222_r101		r1.0HF5		PT28HPCPDK_r1.0HF4	collateral_patch/pdk222_r10hf5
+PATCH	T28HPC	0p5	FDK	PDK	PT28HPCPDK_r1.0hf6		pdk222_r101		r1.0HF6		PT28HPCPDK_r1.0hf5	collateral_patch/pdk222_r10hf6
+PATCH	T28HPC	0p5	FDK	PDK	PT28HPCPDK_r1.0hf7		pdk222_r101		r1.0HF7		PT28HPCPDK_r1.0hf6	collateral_patch/pdk222_r10hf7

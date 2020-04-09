@@ -1,0 +1,20 @@
+TLP	FORMAT	1.0
+
+KIT	NODE	T28HPC
+KIT	PDK	0p5
+KIT	GROUP	FIP
+KIT	TYPE	STDCELL
+KIT	VERSION	7t_base_e.2.0
+KIT	ORIGIN	7t_base_e.1.1
+KIT	TOPDIR	lib222_7t_base_e20
+KIT	SIZE	10000
+KIT     MD5SUM	11ba9bfa12c16459bc242c005c351b6f
+
+REQUIRE	KIT	T28HPC/0p5/FDK/PDK	TOPDIR	pdk222_r10HF7
+
+; If the kit size is huge, it could be split to multiple package files
+PACKAGE	FILE	STDCELL_lib222_7t_base_e.2.0-1.tgz  
+PACKAGE	FILE	STDCELL_lib222_7t_base_e.2.0-2.tgz  
+PACKAGE	FILE	STDCELL_lib222_7t_base_e.2.0-3.tgz  
+
+TLP END

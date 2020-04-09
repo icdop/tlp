@@ -1,0 +1,215 @@
+::::::::::::::
+GPIO_lib222_e.0.6.tlp
+::::::::::::::
+TLP	FORMAT	1.0
+KIT	NODE	T28HPC
+KIT	PDK	0p5
+KIT	GROUP	HIP
+KIT	TYPE	GPIO
+KIT	VERSION	r0.6.1
+KIT	ORIGIN	-
+KIT	TOPDIR	ip222_gpio_r061
+KIT	SIZE	1000
+KIT     MD5SUM	11ba9bfa12c16459bc242c005c351b6f
+
+REQUIRE KIT	T28HPC/0p5/FIP/STDCELL	TOPDIR	lib222_6t_base_e10
+
+;If the kit size is huge, it could be split to multiple package files
+PACKAGE	FILE	GPIO_lib222_e.0.6.tgz  
+
+TLP END
+::::::::::::::
+MEMORY_lib222_2PRF_e.0.6.tlp
+::::::::::::::
+TLP	FORMAT	1.0
+
+KIT	NODE	T28HPC
+KIT	PDK	0p5
+KIT	GROUP	FIP
+KIT	TYPE	MEMORY
+KIT	VERSION	r0.6.1
+KIT	ORIGIN	-
+KIT	TOPDIR	mem222_2prf_r061
+KIT	SIZE	1000
+KIT     MD5SUM	11ba9bfa12c16459bc242c005c351b6f
+
+REQUIRE KIT	T28HPC/0p5/FDK/PDK	TOPDIR	pdk222_r061
+REQUIRE KIT	T28HPC/0p5/FDK/PDK	VERSION	r0.6.1
+
+PACKAGE	FILE	MEMORY_lib222_2PRF_e.0.6.tgz  
+
+TLP END
+::::::::::::::
+PT28HPCADF_r0.6.1.tlp
+::::::::::::::
+TLP	FORMAT	1.0			; header for TLP releaseNote
+
+KIT   	NODE	T28HPC
+KIT	PDK	0p5
+KIT	GROUP	FDK			; base on ICF functional group 
+KIT	TYPE	ADF			; kit type value is pre-defined 
+KIT	VERSION	r0.6.1			; follow the naming convention of each kit
+KIT	ORIGIN	- 			; current version is the initial release
+KIT	TOPDIR	adf222_r061
+KIT	SIZE	10000
+KIT	MD5SUM 	fa6136891da5ce964961abc1f78aaa3c
+
+REQUIRE	KIT	T28HPC/0p5/FDK/PDK	TOPDIR	pdk222_r061
+ 	
+PACKAGE	FILE	PT28HPCADF_r0.6.1.tgz
+
+TLP	END 	; below this line, all content are ignore by tool
+
+::::::::::::::
+PT28HPCCTK_r0.6.1.tlp
+::::::::::::::
+TLP	FORMAT	1.0			; header for TLP releaseNote
+
+KIT   	NODE	T28HPC
+KIT	PDK	0p5
+KIT	GROUP	FDK			; base on ICF functional group 
+KIT	TYPE	CTK			; kit type value is pre-defined 
+KIT	VERSION	r0.6.1			; follow the naming convention of each kit
+KIT	ORIGIN	- 			; current version is the initial release
+KIT	TOPDIR	ctk222_r061
+KIT	SIZE	10000
+KIT	MD5SUM 	fa6136891da5ce964961abc1f78aaa3c
+ 	
+REQUIRE	KIT	T28HPC/0p5/FDK/PDK	TOPDIR	pdk222_r061
+
+PACKAGE	FILE	PT28HPCCTK_r0.6.1.tgz
+
+TLP	END 	; below this line, all content are ignore by tool
+
+::::::::::::::
+PT28HPCPDK_r0.6.1.tlp
+::::::::::::::
+TLP	FORMAT	1.0			; header for TLP releaseNote
+
+KIT   	NODE	T28HPC
+KIT	PDK	0p5
+KIT	GROUP	FDK			; base on ICF functional group 
+KIT	TYPE	PDK			; kit type value is pre-defined 
+KIT	VERSION	r0.6.1			; follow the naming convention of each kit
+KIT	ORIGIN	- 			; current version is the initial release
+KIT	TOPDIR	pdk222_r061
+KIT	SIZE	10000
+KIT	MD5SUM 	fa6136891da5ce964961abc1f78aaa3c
+ 	
+PACKAGE	FILE	PT28HPCPDK_r0.6.1.tgz
+
+TLP	END 	; below this line, all content are ignore by tool
+
+::::::::::::::
+PT28HPCPDK_r1.0.1.tlp
+::::::::::::::
+TLP	FORMAT	1.0			; header for TLP releaseNote
+
+KIT   	NODE	T28HPC
+KIT	PDK	0p5
+KIT	GROUP	FDK			; base on ICF functional group 
+KIT	TYPE	PDK			; kit type value is pre-defined 
+KIT	VERSION	r1.0.1			; follow the naming convention of each kit
+KIT	ORIGIN	- 			; current version is the initial release
+KIT	TOPDIR	pdk222_r101
+KIT	SIZE	10000
+KIT	MD5SUM 	fa6136891da5ce964961abc1f78aaa3c
+ 	
+PACKAGE	FILE	PT28HPCPDK_r1.0.1.tgz
+
+TLP	END 	; below this line, all content are ignore by tool
+
+::::::::::::::
+PT28HPCPDK_r1.0HF4.tlp
+::::::::::::::
+TLP	FORMAT	1.0
+
+KIT	NODE	T28HPC
+KIT	PDK	0p5
+KIT	GROUP	FDK
+KIT	TYPE	PDK
+KIT	VERSION	r1.0HF4
+KIT	ORIGIN	r1.0  	;this version is patched based on r1.0
+KIT	TOPDIR	pdk222_r10HF4
+KIT	SIZE	10000
+KIT	MD5SUM 	11ba9bfa12c16459bc242c005c351b6f
+
+REQUIRE	KIT	T28HPC/0p5/FDK/PDK	TOPDIR	pdk222_r101
+
+; Need to install base package first if this is a partial hot fix
+PACKAGE FILE	PT28HPCPDK_r1.0HF4.tgz
+
+TLP	END
+
+::::::::::::::
+PT28HPCPDK_r1.0hf7.tlp
+::::::::::::::
+TLP	FORMAT	1.0
+
+KIT	NODE	T28HPC
+KIT	PDK	0p5
+KIT	GROUP	FDK
+KIT	TYPE	PDK
+KIT	VERSION	r1.0hf7
+KIT	ORIGIN	r1.0HF6  	;this version is patched based on r1.0HF6
+KIT	TOPDIR	pdk222_r10HF7
+KIT	SIZE	10000
+KIT	MD5SUM 	11ba9bfa12c16459bc242c005c351b6f
+
+
+REQUIRE	KIT	T28HPC/0p5/FDK/PDK	TOPDIR	pdk222_r101
+REQUIRE KIT	T28HPC/0p5/FDK/PDK	TOPDIR	pdk222_r10HF4
+
+; Need to install base package first if this is a partial hot fix
+PACKAGE BASE	PT28HPCPDK_r1.0HF4	T28HPC/0p5/FDK/PDK/pdk222_r10HF4
+PACKAGE FILE	PT28HPCPDK_r1.0hf5.tgz
+PACKAGE FILE	PT28HPCPDK_r1.0hf6.tgz
+PACKAGE FILE	PT28HPCPDK_r1.0hf7.tgz
+
+TLP	END
+
+::::::::::::::
+STDCELL_lib222_6t_base_e.1.0.tlp
+::::::::::::::
+TLP	FORMAT	1.0
+
+KIT	NODE	T28HPC
+KIT	PDK	0p5
+KIT	GROUP	FIP
+KIT	TYPE	STDCELL
+KIT	VERSION	6t_base_e.1.0
+KIT	ORIGIN	-
+KIT	TOPDIR	lib222_6t_base_e10
+KIT	SIZE	10000
+KIT     MD5SUM	11ba9bfa12c16459bc242c005c351b6f
+
+REQUIRE KIT	T28HPC/0p5/FDK/PDK	TOPDIR	pdk222_r061
+;REQUIRE KIT	T28HPC/0p5/FDK/PDK	VERSION	r0.6.1 
+
+; If the kit size is huge, it could be split to multiple package files
+PACKAGE	FILE	STDCELL_lib222_6t_base_e.1.0.tgz  
+
+TLP END
+::::::::::::::
+STDCELL_lib222_7t_base_e.2.0.tlp
+::::::::::::::
+TLP	FORMAT	1.0
+
+KIT	NODE	T28HPC
+KIT	PDK	0p5
+KIT	GROUP	FIP
+KIT	TYPE	STDCELL
+KIT	VERSION	7t_base_e.2.0
+KIT	ORIGIN	7t_base_e.1.1
+KIT	TOPDIR	lib222_7t_base_e20
+KIT	SIZE	10000
+KIT     MD5SUM	11ba9bfa12c16459bc242c005c351b6f
+
+REQUIRE	KIT	T28HPC/0p5/FDK/PDK	TOPDIR	pdk222_r10HF7
+
+; If the kit size is huge, it could be split to multiple package files
+PACKAGE	FILE	STDCELL_lib222_7t_base_e.2.0-1.tgz  
+PACKAGE	FILE	STDCELL_lib222_7t_base_e.2.0-2.tgz  
+PACKAGE	FILE	STDCELL_lib222_7t_base_e.2.0-3.tgz  
+
+TLP END

@@ -1,0 +1,117 @@
+######################################################################
+# Design Collateral Management (DCM) Utility v2017.1116
+######################################################################
+TIME: @20171127_113400 BEGIN dcm_install
+CMDS: dcm_install --info --selectCategory 1222.2/x1r0 --packageCfgDir configs --releaseNoteDir releaseNotes --packageSrcDir packages --targetLibDir techLib
+--------------------------------------------------------
+[dcm_install]: BEGIN 
+--------------------------------------------------------
+[1m[1]: Reading 'releaseNotes/1222.2/x1r0/FDK/ADF/adf222_r061/P1222.2ADF_r0.6.1.releaseNote' ...[0m
+[31m    : Required kit dir '1222.2/x1r0/FDK/PDK/pdk222_r061' has not been installed yet.[0m
+    : Package file - packages/P1222.2ADF_r0.6.1.tgz
+[31;43mERROR: Can not install 'P1222.2ADF_r0.6.1' (dependency fail)[0m
+
+[1m[34m
+------------------------------------------------------------------
+[dcm_install]: Total 1/1 kits require check fail. (error)
+------------------------------------------------------------------
+[0m
+--------------------------------------------------------
+[dcm_install]: BEGIN 
+--------------------------------------------------------
+[1m[1]: Reading 'releaseNotes/1222.2/x1r0/FDK/PDK/pdk222_r061/P1222.2PDK_r0.6.1.releaseNote' ...[0m
+    : Package file - packages/P1222.2PDK_r0.6.1.tgz
+INFO: Unpacking file 'packages/P1222.2PDK_r0.6.1.tgz' ...
+pdk222_r061/
+pdk222_r061/README
+
+[1m[34m
+------------------------------------------------------------------
+SUMMARY: Total 1/1 kits are installed.
+------------------------------------------------------------------
+[0m
+--------------------------------------------------------
+[dcm_install]: BEGIN 
+--------------------------------------------------------
+[1m[1]: Reading 'releaseNotes/1222.2/x1r0/FDK/CTK/ctk222_r061/P1222.2CTK_r0.6.1.releaseNote' ...[0m
+    : Package file - packages/P1222.2CTK_r0.6.1.tgz
+INFO: Unpacking file 'packages/P1222.2CTK_r0.6.1.tgz' ...
+ctk222_r061/
+ctk222_r061/README
+
+[1m[34m
+------------------------------------------------------------------
+SUMMARY: Total 1/1 kits are installed.
+------------------------------------------------------------------
+[0m
+--------------------------------------------------------
+[dcm_install]: BEGIN 
+--------------------------------------------------------
+[1m[1]: Reading 'releaseNotes/1222.2/x1r0/FDK/ADF/adf222_r061/P1222.2ADF_r0.6.1.releaseNote' ...[0m
+    : Package file - packages/P1222.2ADF_r0.6.1.tgz
+INFO: Unpacking file 'packages/P1222.2ADF_r0.6.1.tgz' ...
+adf222_r061/
+adf222_r061/README
+
+[1m[34m
+------------------------------------------------------------------
+SUMMARY: Total 1/1 kits are installed.
+------------------------------------------------------------------
+[0m
+--------------------------------------------------------
+[dcm_install]: BEGIN 
+--------------------------------------------------------
+[1m[1]: Reading 'releaseNotes/1222.2/x1r0/FIP/MEMORY/mem222_2prf_r061/MEMORY_lib222_2PRF_e.0.6.releaseNote' ...[0m
+    : Package file - packages/MEMORY_lib222_2PRF_e.0.6.tgz
+INFO: Unpacking file 'packages/MEMORY_lib222_2PRF_e.0.6.tgz' ...
+mem222_2prf_r061/
+mem222_2prf_r061/README
+
+[1m[34m
+------------------------------------------------------------------
+SUMMARY: Total 1/1 kits are installed.
+------------------------------------------------------------------
+[0m
+--------------------------------------------------------
+[dcm_install]: BEGIN 
+--------------------------------------------------------
+[1m[1]: Reading 'releaseNotes/1222.2/x1r0/FIP/STDCELL/lib222_6t_base_e10/STDCELL_lib222_6t_base_e.1.0.releaseNote' ...[0m
+    : Package file - packages/STDCELL_lib222_6t_base_e.1.0.tgz
+INFO: Unpacking file 'packages/STDCELL_lib222_6t_base_e.1.0.tgz' ...
+lib222_6t_base_e10/
+lib222_6t_base_e10/README
+
+[1m[34m
+------------------------------------------------------------------
+SUMMARY: Total 1/1 kits are installed.
+------------------------------------------------------------------
+[0m
+--------------------------------------------------------
+[dcm_install]: BEGIN 
+--------------------------------------------------------
+[1m[1]: Reading 'releaseNotes/1222.2/x1r0/FIP/STDCELL/lib222_7t_base_e20/STDCELL_lib222_7t_base_e.2.0.releaseNote' ...[0m
+[31m    : Required kit dir '1222.2/x1r0/FDK/PDK/pdk222_r10HF7' has not been installed yet.[0m
+    : Package file - packages/STDCELL_lib222_7t_base_e.2.0-1.tgz
+    : Package file - packages/STDCELL_lib222_7t_base_e.2.0-2.tgz
+    : Package file - packages/STDCELL_lib222_7t_base_e.2.0-3.tgz
+[31;43mERROR: Can not install 'STDCELL_lib222_7t_base_e.2.0' (dependency fail)[0m
+
+[1m[34m
+------------------------------------------------------------------
+[dcm_install]: Total 1/1 kits require check fail. (error)
+------------------------------------------------------------------
+[0m
+--------------------------------------------------------
+[dcm_install]: BEGIN 
+--------------------------------------------------------
+[1m[1]: Reading 'releaseNotes/1222.2/x1r0/HIP/AMS/ip222_gpio_r061/GPIO_lib222_e.0.6.1.releaseNote' ...[0m
+    : Package file - packages/GPIO_lib222_e.0.6.1.tgz
+INFO: Unpacking file 'packages/GPIO_lib222_e.0.6.1.tgz' ...
+ip222_gpio_r061/
+ip222_gpio_r061/README
+
+[1m[34m
+------------------------------------------------------------------
+SUMMARY: Total 1/1 kits are installed.
+------------------------------------------------------------------
+[0m

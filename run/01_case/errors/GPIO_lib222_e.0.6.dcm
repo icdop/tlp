@@ -1,0 +1,17 @@
+DCM	FORMAT	1.0
+KIT	NODE	1222.2
+KIT	UPF	x1r0
+KIT	GROUP	HIP
+KIT	TYPE	GPIO
+KIT	VERSION	r0.6
+KIT	ORIGIN	-
+KIT	TOPDIR	ip222_gpio_r06
+KIT	SIZE	1000
+KIT     MD5SUM	11ba9bfa12c16459bc242c005c351b6f
+
+REQUIRE KIT	1222.2/x1r0/FIP/STDCELL	TOPDIR	lib222_6t_base_e10
+
+;If the kit size is huge, it could be split to multiple package files
+PACKAGE	FILE	GPIO_lib222_e.0.6.tgz  
+
+DCM END

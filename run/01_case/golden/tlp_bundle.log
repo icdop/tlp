@@ -1,0 +1,51 @@
+######################################################################
+# TechLib Package Management (TLP) Utility v2020.0410
+######################################################################
+TIME: @20171127_113401 BEGIN tlp_install
+CMDS: tlp_install --info --selectCategory 1222.2/x1r0 --packageCfgDir configs --releaseNoteDir releaseNotes --packageSrcDir packages --targetLibDir techLib --targetLibDir bundleLib --bundleList bundleFile.txt
+--------------------------------------------------------
+[tlp_install]: BEGIN 
+--------------------------------------------------------
+[1m[1]: Reading 'configs/P1222.2PDK_r0.6.1.tlp' ...[0m
+    : Package file - packages/P1222.2PDK_r0.6.1.tgz
+INFO: Unpacking file 'packages/P1222.2PDK_r0.6.1.tgz' ...
+pdk222_r061/
+pdk222_r061/README
+
+[1m[2]: Reading 'configs/P1222.2CTK_r0.6.1.tlp' ...[0m
+    : Package file - packages/P1222.2CTK_r0.6.1.tgz
+INFO: Unpacking file 'packages/P1222.2CTK_r0.6.1.tgz' ...
+ctk222_r061/
+ctk222_r061/README
+
+[1m[3]: Reading 'configs/P1222.2ADF_r0.6.1.tlp' ...[0m
+    : Package file - packages/P1222.2ADF_r0.6.1.tgz
+INFO: Unpacking file 'packages/P1222.2ADF_r0.6.1.tgz' ...
+adf222_r061/
+adf222_r061/README
+
+[1m[4]: Reading 'configs/MEMORY_lib222_2PRF_e.0.6.tlp' ...[0m
+    : Package file - packages/MEMORY_lib222_2PRF_e.0.6.tgz
+INFO: Unpacking file 'packages/MEMORY_lib222_2PRF_e.0.6.tgz' ...
+mem222_2prf_r061/
+mem222_2prf_r061/README
+
+[1m[5]: Reading 'configs/STDCELL_lib222_6t_base_e.1.0.tlp' ...[0m
+    : Package file - packages/STDCELL_lib222_6t_base_e.1.0.tgz
+INFO: Unpacking file 'packages/STDCELL_lib222_6t_base_e.1.0.tgz' ...
+lib222_6t_base_e10/
+lib222_6t_base_e10/README
+
+[1m[6]: Reading 'configs/GPIO_lib222_e.0.6.1.tlp' ...[0m
+    : Package file - packages/GPIO_lib222_e.0.6.1.tgz
+INFO: Unpacking file 'packages/GPIO_lib222_e.0.6.1.tgz' ...
+ip222_gpio_r061/
+ip222_gpio_r061/README
+
+[1m[34m
+------------------------------------------------------------------
+SUMMARY: Total 6/6 kits are installed.
+------------------------------------------------------------------
+[0m
+TIME: @20171127_113402 END   tlp_install
+========================================================

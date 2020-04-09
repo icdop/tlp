@@ -1,0 +1,19 @@
+;
+;KIT	NODE	T28HPC
+;KIT	PDK	0p5
+;
+;
+
+;-----	------------------------------	-----	-------	----------------------	---------------	--------------	-----------------------------------------
+;PACK	SKU				GROUP	TYPE	TOPDIR			VERSION		ORIGIN		DIRECTORY
+;-----	------------------------------	-----	-------	----------------------	---------------	--------------	-----------------------------------------
+BASE	PT28HPCPDK_r1.0.1		FDK	PDK	pdk222_r101		r1.0.1		pdk222_r061	collateral/pdk222_r101
+PATCH	PT28HPCPDK_r1.0hf1		FDK	PDK	pdk222_r10hf1		r1.0hf1		pdk222_r101	patch/pdk222_r10hf1
+PATCH	PT28HPCPDK_r1.0hf2		FDK	PDK	pdk222_r10hf2		r1.0hf2		pdk222_r101	patch/pdk222_r10hf2
+PATCH	PT28HPCPDK_r1.0hf3		FDK	PDK	pdk222_r10hf3		r1.0hf3		pdk222_r101	patch/pdk222_r10hf3
+PATCH	PT28HPCPDK_r1.0hf4		FDK	PDK	pdk222_r10hf4		r1.0hf4		pdk222_r101	patch/pdk222_r10hf4
+
+BASE	PT28HPCPDK_r1.0HF4		FDK	PDK	pdk222_r10HF4		r1.0HF4		pdk222_r101	collateral/pdk222_r10HF4
+PATCH	PT28HPCPDK_r1.0hf5		FDK	PDK	pdk222_r10hf5		r1.0hf5		pdk222_r10HF4	patch/pdk222_r10hf5
+PATCH	PT28HPCPDK_r1.0hf6		FDK	PDK	pdk222_r10hf6		r1.0hf6		pdk222_r10HF4	patch/pdk222_r10hf6
+PATCH	PT28HPCPDK_r1.0hf7		FDK	PDK	pdk222_r10hf7		r1.0hf7		pdk222_r10HF4	patch/pdk222_r10hf7

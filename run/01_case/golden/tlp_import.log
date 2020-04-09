@@ -1,0 +1,60 @@
+######################################################################
+# Design Collateral Management (DCM) Utility v2017.1116
+######################################################################
+TIME: @20171127_113400 BEGIN dcm_import
+CMDS: dcm_import --selectCategory 1222.2/x1r0 --packageCfgDir configs --releaseNoteDir releaseNotes --packageSrcDir packages --targetLibDir techLib
+--------------------------------------------------------
+[dcm_import]: BEGIN 
+--------------------------------------------------------
+[1m[1]: Reading 'configs/GPIO_lib222_e.0.6.1.dcm' ...[0m
+    : Package file - packages/GPIO_lib222_e.0.6.1.tgz
+    : Creating '1222.2/x1r0/HIP/AMS/ip222_gpio_r061/GPIO_lib222_e.0.6.1.releaseNote' (r0.6.1)
+
+[1m[2]: Reading 'configs/MEMORY_lib222_2PRF_e.0.6.dcm' ...[0m
+    : Package file - packages/MEMORY_lib222_2PRF_e.0.6.tgz
+    : Creating '1222.2/x1r0/FIP/MEMORY/mem222_2prf_r061/MEMORY_lib222_2PRF_e.0.6.releaseNote' (r0.6.1)
+
+[1m[3]: Reading 'configs/P1222.2ADF_r0.6.1.dcm' ...[0m
+    : Package file - packages/P1222.2ADF_r0.6.1.tgz
+    : Creating '1222.2/x1r0/FDK/ADF/adf222_r061/P1222.2ADF_r0.6.1.releaseNote' (r0.6.1)
+
+[1m[4]: Reading 'configs/P1222.2CTK_r0.6.1.dcm' ...[0m
+    : Package file - packages/P1222.2CTK_r0.6.1.tgz
+    : Creating '1222.2/x1r0/FDK/CTK/ctk222_r061/P1222.2CTK_r0.6.1.releaseNote' (r0.6.1)
+
+[1m[5]: Reading 'configs/P1222.2PDK_r0.6.1.dcm' ...[0m
+    : Package file - packages/P1222.2PDK_r0.6.1.tgz
+    : Creating '1222.2/x1r0/FDK/PDK/pdk222_r061/P1222.2PDK_r0.6.1.releaseNote' (r0.6.1)
+
+[1m[6]: Reading 'configs/P1222.2PDK_r1.0.1.dcm' ...[0m
+    : Package file - packages/P1222.2PDK_r1.0.1.tgz
+    : Creating '1222.2/x1r0/FDK/PDK/pdk222_r101/P1222.2PDK_r1.0.1.releaseNote' (r1.0.1)
+
+[1m[7]: Reading 'configs/P1222.2PDK_r1.0HF4.dcm' ...[0m
+    : Package file - packages/P1222.2PDK_r1.0HF4.tgz
+    : Creating '1222.2/x1r0/FDK/PDK/pdk222_r101/P1222.2PDK_r1.0HF4.releaseNote' (r1.0HF4)
+
+[1m[8]: Reading 'configs/P1222.2PDK_r1.0hf7.dcm' ...[0m
+    : Install base - configs/P1222.2PDK_r1.0HF4.dcm
+    : Package file - packages/P1222.2PDK_r1.0hf5.tgz
+    : Package file - packages/P1222.2PDK_r1.0hf6.tgz
+    : Package file - packages/P1222.2PDK_r1.0hf7.tgz
+    : Creating '1222.2/x1r0/FDK/PDK/pdk222_r101/P1222.2PDK_r1.0hf7.releaseNote' (r1.0hf7)
+
+[1m[9]: Reading 'configs/STDCELL_lib222_6t_base_e.1.0.dcm' ...[0m
+    : Package file - packages/STDCELL_lib222_6t_base_e.1.0.tgz
+    : Creating '1222.2/x1r0/FIP/STDCELL/lib222_6t_base_e10/STDCELL_lib222_6t_base_e.1.0.releaseNote' (6t_base_e.1.0)
+
+[1m[10]: Reading 'configs/STDCELL_lib222_7t_base_e.2.0.dcm' ...[0m
+    : Package file - packages/STDCELL_lib222_7t_base_e.2.0-1.tgz
+    : Package file - packages/STDCELL_lib222_7t_base_e.2.0-2.tgz
+    : Package file - packages/STDCELL_lib222_7t_base_e.2.0-3.tgz
+    : Creating '1222.2/x1r0/FIP/STDCELL/lib222_7t_base_e20/STDCELL_lib222_7t_base_e.2.0.releaseNote' (7t_base_e.2.0)
+
+[1m[34m
+------------------------------------------------------------------
+[dcm_import]: Total 10/10 dcm release notes are created.
+------------------------------------------------------------------
+[0m
+TIME: @20171127_113400 END   dcm_import
+========================================================

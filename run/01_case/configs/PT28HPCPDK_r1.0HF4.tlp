@@ -1,0 +1,16 @@
+TLP	FORMAT	1.0
+
+KIT	NODE	T28HPC
+KIT	PDK	0p5
+KIT	GROUP	FDK
+KIT	TYPE	PDK
+KIT	VERSION	r1.0HF4
+KIT	ORIGIN	r1.0  	;this version is patched based on r1.0
+KIT	TOPDIR	pdk222_r101
+KIT	SIZE	10000
+
+; Need to install base package first if this is a partial hot fix
+PACKAGE FILE	PT28HPCPDK_r1.0HF4.tgz	pdk222_r10HF4
+
+TLP
+

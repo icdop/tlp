@@ -1,0 +1,16 @@
+TLP	FORMAT	1.0			; header for TLP releaseNote
+
+KIT   	NODE	T28HPC
+KIT	PDK	0p5
+KIT	GROUP	FDK			; base on ICF functional group 
+KIT	TYPE	PDK			; kit type value is pre-defined 
+KIT	VERSION	r1.0.1			; follow the naming convention of each kit
+KIT	ORIGIN	- 			; current version is the initial release
+KIT	TOPDIR	pdk222_r101
+KIT	SIZE	10000
+KIT	MD5SUM 	fa6136891da5ce964961abc1f78aaa3c
+ 	
+PACKAGE	FILE	PT28HPCPDK_r1.0.1.tgz
+
+TLP	END 	; below this line, all content are ignore by tool
+

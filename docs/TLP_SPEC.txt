@@ -1,0 +1,17 @@
+1) Install full package
+
+  SKU.tlp
+================
+  KIT TOPDIR <kit_topdir>
+
+  PACAKGE BASE SKU.tgz pkg_topdir
+
+  PACAKGE FILE SKU.tgz pkg_topdir
+
+  % cd $category_dir
+  $ tar xvf SKU.tz 
+
+      ln -s 
+        $catgeory_dir/topdir -> target_dir
+
+        

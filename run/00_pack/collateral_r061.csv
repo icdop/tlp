@@ -1,0 +1,19 @@
+TLP	PACKAGE	1.0
+
+KIT	NODE	T28HPC
+KIT	PDK	0p5
+
+;REQUIRE KIT	T28HPC/0p5/FDK/PDK	TOPDIR	pdk222_r061
+
+#-----	-----	-----	-----	-------	------------------------------	----------------------	---------------	--------------------	-----------------------------------------
+#PACK	NODE	PDK	GROUP	TYPE	SKU				TOPDIR			VERSION		REQUIRE			COLLATERAL
+#-----	-----	-----	-----	-------	------------------------------	----------------------	---------------	--------------------	-----------------------------------------
+FULL	T28HPC	0p5	FDK	PDK	PT28HPCPDK_r0.6.1		pdk222_r061		r0.6.1		-			collateral/pdk222_r061
+FULL	T28HPC	0p5	FDK	ADF	PT28HPCADF_r0.6.1		adf222_r061		r0.6.1		PT28HPCPDK_r0.6.1	collateral/adf222_r061
+FULL	T28HPC	0p5	FDK	CTK	PT28HPCCTK_r0.6.1		ctk222_r061		r0.6.1		PT28HPCPDK_r0.6.1	collateral/ctk222_r061
+FULL	T28HPC	0p5	FIP	STDCELL	STDCELL_lib222_6t_base_e.1.0	lib222_6t_base_e10	e1.0.0		PT28HPCPDK_r0.6.1	collateral/lib222_6t_base_e10
+FULL	T28HPC	0p5	FIP	MEMORY	MEMORY_lib222_2PRF_e.0.6	mem222_2prf_r061	e0.6.1		PT28HPCPDK_r0.6.1	collateral/mem222_2prf_r061
+FULL	T28HPC	0p5	HIP	GPIO	GPIO_lib222_e.0.6		ip222_gpio_r061		e0.6.1		PT28HPCPDK_r0.6.1	collateral/ip222_gpio_r061
+
+
+TLP	END
