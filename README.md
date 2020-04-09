@@ -1,4 +1,4 @@
-# TechLib Package Management Quick Start Guide V2020_0410a
+# TechLib Package Management Kit V2020_0410a
 
 ## Specify following environment variables in the shell:
 
