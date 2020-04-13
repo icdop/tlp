@@ -1,12 +1,26 @@
 # TechLib Package Management Kit V2020_0410a
 
-## Specify following environment variables in the shell:
+## Define the following environment variables in the shell:
 
 	TECHLIB_PKGS	- package source directory (*.tgz and *.tlp)
 	TECHLIB_RELN	- release note respository directory (sorted collection)
 	TECHLIB_HOME	- target techLib directory (where you plan to install)
 
-## Step 0：Prepare TechLib Package release note:
+Directory:
+
+	$(TECHLIB_HOME)/
+		+-- T28HPC
+			+----- 0p5
+			|	+----- FDK
+			|		+----- PDK
+			|		+----- CTK
+			+----- 0p9
+				+----- FDK
+				|	+----- PDK
+				+----- FIP
+					+----- STDCELL
+
+## Step 0：Prepare TechLib Package defintion file:
 
 Example:
 	
