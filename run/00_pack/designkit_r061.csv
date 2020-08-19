@@ -1,0 +1,19 @@
+BEGIN	PACKAGE	1.0
+
+NODE	T28HPC
+MVER	0p5
+
+;DEPN	T28HPC/0p5/FDK/PDK	pdk222_r061
+
+#-----	-----	-----	-----	-------	------------------------------	----------------------	---------------	--------------------	-----------------------------------------
+#PACK	NODE	MVER	CATG	TYPE	NAME				TDIR			VERSION		REQU			SOURCE
+#-----	-----	-----	-----	-------	------------------------------	----------------------	---------------	--------------------	-----------------------------------------
+FULL	T28HPC	0p5	FDK	PDK	PT28HPCPDK_r0.6.1		pdk222_r061		r0.6.1		-			designkit/pdk222_r061
+FULL	T28HPC	0p5	FDK	ADF	PT28HPCADF_r0.6.1		adf222_r061		r0.6.1		PT28HPCPDK_r0.6.1	designkit/adf222_r061
+FULL	T28HPC	0p5	FDK	CTK	PT28HPCCTK_r0.6.1		ctk222_r061		r0.6.1		PT28HPCPDK_r0.6.1	designkit/ctk222_r061
+FULL	T28HPC	0p5	FIP	STDCELL	STDCELL_lib222_6t_base_e.1.0	lib222_6t_base_e100	e1.0.0		PT28HPCPDK_r0.6.1	designkit/lib222_6t_base_e10
+FULL	T28HPC	0p5	FIP	MEMORY	MEMORY_lib222_2PRF_r.0.6.1	mem222_2prf_r061	r0.6.1		PT28HPCPDK_r0.6.1	designkit/mem222_2prf_r061
+FULL	T28HPC	0p5	HIP	GPIO	GPIO_lib222_e.0.6.1		ip222_gpio_r061		r0.6.1		PT28HPCPDK_r0.6.1	designkit/ip222_gpio_r061
+
+
+END
