@@ -4,12 +4,12 @@ set prog = $0:t
 if (($1 == "-h")||($1 == "--help")) then
    echo "Usage: $prog <options> <pacakge.tlp>"
    echo "  --packageSrcDir   <packageSourceDir>	(TECHLIB_PKGS)"
-   echo "  --releaseNoteDir  <releaseNoteDir>	(TECHLIB_RELN)"
-   echo "  --targetLibDir    <techLibDir>  	(TECHLIB_HOME)"
+   echo "  --dataSheetDir  <dataSheetDir>	(TECHLIB_DOCS)"
+   echo "  --targetLibDir    <techLibDir>  	(TECHLIB_ROOT)"
    echo "  --bundleFile      <BundleListFile>"
-   echo "  --selectByCategory  <NODE/PDK/GROUP/TYPE>"
+   echo "  --selectByCategory  <NODE/MVER/CATG/TYPE>"
    echo "Description:"
-   echo "  Install collateral package based on tlp config file."
+   echo "  Install designkit package based on tlp config file."
    echo ""
    exit -1
 endif
@@ -67,13 +67,13 @@ if ("$name_list" != "") then
    /usr/bin/gawk -f $TLP_HOME/csh/tlp_install.awk $tlp_list | tee -a $log_file
    set menu_mode = 0
 else
-   if ($?TECHLIB_RELN == 0) then
-      printf "\033[31mERROR: releaseNote path env(TECHLIB_RELN) is not specified.\033[0m\n"
+   if ($?TECHLIB_DOCS == 0) then
+      printf "\033[31mERROR: dataSheet path env(TECHLIB_DOCS) is not specified.\033[0m\n"
       exit 1
-   else if {(test -d $TECHLIB_RELN)} then
-   #   echo "INFO: TECHLIB_RELN = $TECHLIB_RELN"
+   else if {(test -d $TECHLIB_DOCS)} then
+   #   echo "INFO: TECHLIB_DOCS = $TECHLIB_DOCS"
    else
-      printf "\033[31mERROR: releaseNote directory '$TECHLIB_RELN' does not exist.\033[0m\n"
+      printf "\033[31mERROR: dataSheet directory '$TECHLIB_DOCS' does not exist.\033[0m\n"
       exit 1
    endif
 endif
@@ -81,14 +81,14 @@ endif
 while ($menu_mode == 1)
    while ($menu_category == 1) 
      clear
-     echo "INFO: TECHLIB_RELN = $TECHLIB_RELN"
+     echo "INFO: TECHLIB_DOCS = $TECHLIB_DOCS"
      echo "=============================================================="
      echo "INFO: Please specify Kit Category :"
-     (cd $TECHLIB_RELN; tree --noreport -C -d -L 4 .)
+     (cd $TECHLIB_DOCS; tree --noreport -C -d -L 4 .)
      echo -n "INPUT: Category = ($kit_category) ? " 
      set kit_category = "$<"
      echo $kit_category
-     if {(test -d $TECHLIB_RELN/$kit_category )} then
+     if {(test -d $TECHLIB_DOCS/$kit_category )} then
        set menu_category = 0
      else
        set kit_category = ""
@@ -101,8 +101,8 @@ while ($menu_mode == 1)
    while ($menu_package == 1)
      echo "=============================================================="
      echo "INFO: Please select the following packages to be installed :"
-     echo "[ $TECHLIB_RELN/$kit_category ]:"
-     set tlp_list = `cd $TECHLIB_RELN; find $kit_category -name \*.releaseNote -print | sort`
+     echo "[ $TECHLIB_DOCS/$kit_category ]:"
+     set tlp_list = `cd $TECHLIB_DOCS; find $kit_category -name \*.dts -print | sort`
      set n=0
      
      printf "\033[1m"
@@ -115,7 +115,7 @@ while ($menu_mode == 1)
         set kit_basename=$tlp_file:t:r
         set kit_topdir=$tlp_file:h:t
         set kit_type=$tlp_file:h:h:t
-        if {(test -f $TECHLIB_HOME/.tlp_install/$kit_basename.tlp)} then
+        if {(test -f $TECHLIB_ROOT/.tlp_install/$kit_basename.tlp)} then
            if ($menu_list_all) then
               set n=`expr $n + 1`
               printf "\033[0m\033[34m"
@@ -153,8 +153,8 @@ while ($menu_mode == 1)
          set menu_list_all = 1
       else if (($sel == "t")||($sel == "T")) then
          echo "=============================================================="
-         echo "INFO: Current releaseNote directory: "
-         tree -n  $TECHLIB_RELN/$kit_category | less
+         echo "INFO: Current data Sheet directory: "
+         tree -n  $TECHLIB_DOCS/$kit_category | less
       else if (($sel == "h")||($sel == "H")) then
          set menu_list_all = 0
       else if ($sel == 0) then
@@ -165,7 +165,7 @@ while ($menu_mode == 1)
       else if ($sel > $n) then
          printf "\033[31mERROR: selection over the range : (1~$n) \033[0m\n" 
       else
-         set tlp_file = $TECHLIB_RELN/$tlp_list[$sel]
+         set tlp_file = $TECHLIB_DOCS/$tlp_list[$sel]
          if {(test -f $tlp_file)} then
             echo "INFO: Install kit '$tlp_list[$sel]' .."
             /usr/bin/awk -f $TLP_HOME/csh/tlp_install.awk $tlp_file | tee -a $log_file
@@ -174,8 +174,8 @@ while ($menu_mode == 1)
          endif
       endif       
    end
-#   mkdir -p $TECHLIB_HOME
-#   tree --noreport -L 5 $TECHLIB_HOME
+#   mkdir -p $TECHLIB_ROOT
+#   tree --noreport -L 5 $TECHLIB_ROOT
 end
 
 echo "TIME: @`date +%Y%m%d_%H%M%S` END   $prog" | tee -a $log_file

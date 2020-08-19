@@ -24,8 +24,8 @@ switch($1)
     end
     breaksw
   case "env"
-    echo "TECHLIB_HOME = $TECHLIB_HOME"
-    echo "TECHLIB_RELN = $TECHLIB_RELN"
+    echo "TECHLIB_ROOT = $TECHLIB_ROOT"
+    echo "TECHLIB_DOCS = $TECHLIB_DOCS"
     echo "TECHLIB_PKGS = $TECHLIB_PKGS"
     breaksw
   case "readme":

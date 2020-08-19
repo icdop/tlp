@@ -39,7 +39,7 @@ endif
 printf "\033[1m\033[34m"
 echo -n "" | tee $log_file
 echo "######################################################################" | tee -a $log_file
-echo "# TechLib Package Management (TLP) Utility v2020.0410" | tee -a $log_file
+echo "# TechLib Package (TLP) Management Utility v2020.0410" | tee -a $log_file
 echo "######################################################################" | tee -a $log_file
 printf "\033[0m"
 exit 0

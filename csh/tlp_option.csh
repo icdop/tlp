@@ -3,12 +3,12 @@
 set prog = $0:t
 if (($1 == "-h")||($1 == "--help")) then
    echo "Usage: $prog <options>"
-   echo "  --targetLibDir    <techLibDir>  	(TECHLIB_HOME)"
+   echo "  --targetLibDir    <techLibDir>  	(TECHLIB_ROOT)"
    echo "  --packageCfgDir   <packageConfigDir>	(TECHLIB_CFGS)"
    echo "  --packageSrcDir   <packageSourceDir>	(TECHLIB_PKGS)"
-   echo "  --releaseNoteDir  <releaseNoteDir>	(TECHLIB_RELN)"
+   echo "  --dataSheetDir    <dataSheetDir>	(TECHLIB_DOCS)"
    echo "  --bundleFile      <BundleListFile>"
-   echo "  --selectCategory  <NODE/PDK/GROUP/TYPE>"
+   echo "  --selectByCategory<NODE/MVER/CATG/TYPE>"
    echo "Description:"
    echo "  "
    exit -1
@@ -46,18 +46,18 @@ while ($parse_option)
       breaksw 
 
       case "-r":
-      case "--releaseNoteDir":
+      case "--dataSheetDir":
         shift argv
-        setenv TECHLIB_RELN $1
-        echo "INFO:   --releaseNoteDir	$TECHLIB_RELN"
+        setenv TECHLIB_DOCS $1
+        echo "INFO:   --dataSheetDir	$TECHLIB_DOCS"
         shift argv
       breaksw 
 
       case "-t":
       case "--targetLibDir":
         shift argv
-        setenv TECHLIB_HOME $1
-        echo "INFO:   --targetLibDir	$TECHLIB_HOME"
+        setenv TECHLIB_ROOT $1
+        echo "INFO:   --targetLibDir	$TECHLIB_ROOT"
         shift argv
       breaksw 
 
@@ -76,19 +76,18 @@ while ($parse_option)
         shift argv
       breaksw 
 
-      case "--packTempDir":
+      case "--tempDir":
         shift argv
-        setenv TLP_PACK_TEMP $1
-        echo "INFO:   --packTempDir	$TLP_PACK_TEMP"
+        setenv TECHLIB_TEMP $1
+        echo "INFO:   --tempDir	$TECHLIB_TEMP"
         shift argv
       breaksw 
 
-      case "-c":
+      case "-s":
       case "--selectByCategory":
-      case "--selectCategory":
         shift argv
         set kit_category=$1
-        echo "INFO:   --selectCategory	$kit_category"
+        echo "INFO:   --selectByCategory	$kit_category"
         shift argv
       breaksw 
 
@@ -107,12 +106,12 @@ while ($parse_option)
   endsw
 end 
 
-if ($?TECHLIB_HOME == 0) then
-   setenv TECHLIB_HOME "techLib"
+if ($?TECHLIB_ROOT == 0) then
+   setenv TECHLIB_ROOT "techLib"
 endif
 
-if ($?TECHLIB_RELN == 0) then
-   setenv TECHLIB_RELN "releaseNotes"
+if ($?TECHLIB_DOCS == 0) then
+   setenv TECHLIB_DOCS "dataSheets"
 endif
 
 if ($?TECHLIB_PKGS == 0) then
@@ -140,8 +139,8 @@ if ($?bundleFile == 0) then
 endif
 
 if ($?info_mode) then
-   echo "TECHLIB_HOME = $TECHLIB_HOME"
-   echo "TECHLIB_RELN = $TECHLIB_RELN"
+   echo "TECHLIB_ROOT = $TECHLIB_ROOT"
+   echo "TECHLIB_DOCS = $TECHLIB_DOCS"
    echo "TECHLIB_PKGS = $TECHLIB_PKGS"
    echo "TECHLIB_CFGS = $TECHLIB_PKGS"
 endif

@@ -25,7 +25,7 @@ BEGIN {
   print "--------------------------------------------------------"
   print "[tlp_install]: BEGIN "
   print "--------------------------------------------------------"
-  tlp_install_root = ENVIRON["TECHLIB_HOME"]
+  tlp_install_root = ENVIRON["TECHLIB_ROOT"]
   if (tlp_install_root == "") {
       tlp_install_root = "techLib"
   }
@@ -47,13 +47,13 @@ BEGIN {
   }
   
   
-  tlp_reln_root = ENVIRON["TECHLIB_RELN"] 
-  if (tlp_reln_root == "") {
-      tlp_reln_root = "releaseNotes"
+  tlp_docs_root = ENVIRON["TECHLIB_DOCS"] 
+  if (tlp_docs_root == "") {
+      tlp_docs_root = "dataSheets"
   }
 
 
-  tlp_install_option= ENVIRON["TLP_INSTALL_OPTION"]
+  tlp_install_option= ENVIRON["TECHLIB_OPTION"]
   split(tlp_install_option, tlp_options)
   for (option in tlp_options) {
       if (option == "--verbose") {
@@ -64,7 +64,7 @@ BEGIN {
       }
   }
   
-  tlp_intall_temp = ENVIRON["TLP_INSTALL_TEMP"]
+  tlp_install_temp = ENVIRON["TECHLIB_TEMP"]
   
   tlp_totoal   = 0
   tlp_created  = 0
@@ -83,13 +83,13 @@ BEGINFILE {
   tlp_total++
   HILITE("["tlp_total"]: Reading '"FILENAME"' ...")
   tlp_format    = "1.0"
-  kit_node      = _
-  kit_pdk       = _
+  process_node      = _
+  model_vers       = _
   kit_group     = _
   kit_type      = _
-  kit_version   = _
+  kit_name   = _
   kit_orgin     = _
-  kit_topdir    = _
+  kit_srcdir    = _
   kit_size      = _
   kit_md5sum    = _
   
@@ -104,30 +104,38 @@ BEGINFILE {
 
 }
 /^#/ { next }
-/^TLP\s+FORMAT\s/	{ tlp_format = $3 }
-/^TLP\s+END\s/		{ nextfile }
+/^BEGIN\s+TLP\s/	{ 
+  if ($3 == "") {
+      tlp_package_type = "FULL"
+  } else {
+      tlp_package_type = $3
+      print "    : Package type - "tlp_package_type
+  }
+}
+/^END\s/		{ nextfile }
 
-/^KIT\s+NODE\s/      { kit_node = $3 }
-/^KIT\s+PDK\s/       { kit_pdk  = $3 }
-/^KIT\s+GROUP\s/     { kit_group = $3 }
-/^KIT\s+TYPE\s/      { kit_type = $3 }
-/^KIT\s+TOPDIR\s/    { kit_topdir = $3 }
-/^KIT\s+VERSION\s/   { kit_version = $3 }
-/^KIT\s+ORIGIN\s/    { kit_origin = $3 }
-/^KIT\s+SIZE\s/      { kit_size = $3 }
-/^KIT\s+MD5SUM\s/    { kit_md5sum = $3 }
+/^NAME\s/    { kit_name = $2 }
+/^ORIG\s/    { kit_origin = $2 }
 
-/^REQUIRE\s+SKU\s/ {
-  req_kit_SKU = $3
-  if ((req_kit_SKU != "_") && (req_kit_SKU != "-")) {
-     if (system("test -e "tlp_install_root"/.tlp_install/"req_kit_SKU".tlp") != 0) {
-        PRINT("    : Required kit SKU '"req_kit_SKU"' has not been installed yet.")
+/^NODE\s/      { process_node = $2 }
+/^MVER\s/     { model_vers  = $2 }
+/^CATG\s/     { kit_group = $2 }
+/^TYPE\s/      { kit_type = $2 }
+/^SDIR\s/      { kit_srcdir = $2 }
+/^SIZE\s/      { kit_size = $2 }
+/^MD5S\s/      { kit_md5sum = $2 }
+
+/^DEPN\s+KIT=/ {
+  req_kit_name = $3
+  if ((req_kit_name != "_") && (req_kit_name != "-")) {
+     if (system("test -e "tlp_install_root"/.tlp_install/"req_kit_name".tlp") != 0) {
+        PRINT("    : Required kit '"req_kit_name"' has not been installed yet.")
         kit_require_fail++
      }
   }
 }
 
-/^REQUIRE\s+DIR\s+(\S+)/ {
+/^DEPN\s+DIR=/ {
   req_kit_dir = $3
   if ((req_kit_dir != "_") && (req_kit_dir != "-")) {
      if (system("test -e "tlp_install_root"/"req_kit_dir) != 0) {
@@ -138,9 +146,9 @@ BEGINFILE {
 }
 
 
-/^REQUIRE\s+KIT\s/ {
+/^DEPN\s+KIT\s/ {
   req_kit_type = $3
-  if (req_kit_SKU != "_") {
+  if (req_kit_name != "_") {
      if ($4 == "TOPDIR") {
         req_kit_dir = req_kit_type"/"$5
         if (system("test -e "tlp_install_root"/"req_kit_dir) != 0) {
@@ -151,16 +159,10 @@ BEGINFILE {
   }
 }
 
-/^PACKAGE\s+TYPE\s/ { 
-  tlp_package_type = $3 
-  if ($3 != "FULL") {
-       print "    : Package type - "tlp_package_type
-  }
-}
-/^PACKAGE\s+TARGET\s/ { 
+  /^TDIR\s/ { 
   tlp_package_dir = $3 
 }
-/^PACKAGE\s+BASE\s/  {
+/^REQU\s/  {
     base_num++ 
     pkgs_base[base_num]=$3
     tlp_pkgs_base = tlp_pkgs_config"/"pkgs_base[base_num]".tlp"
@@ -171,13 +173,13 @@ BEGINFILE {
        print "    : Install base - "tlp_pkgs_base
     }
 }
-/^PACKAGE\s+(FILE|FULL|MULTI|PATCH)\s/  {
+/^(FILE|FULL|MULTI|PATCH)\s/  {
     file_num++
-    file_pack[file_name]=$2
+    file_pack[file_num]=$2
     file_lst[file_num]=$3
     file_top[file_num]=$4
     file_md5[file_num]=$5
-    file_tgz[file_num]=find_tlp_package($3)
+    file_tgz[file_num]=find_tlp_package($2)
     if (file_tgz[file_num] == "") {
        pkgs_file_missing++
        PRINT("    : Pacakge file - "file_lst[file_num]" can not be found in package source.")
@@ -189,52 +191,53 @@ BEGINFILE {
 
 ENDFILE {
   if (verbose_mode == 1) {
-     print "TLP FORMAT    "tlp_format
-     print "KIT NODE      "kit_node
-     print "KIT PDK       "kit_pdk
-     print "KIT GROUP     "kit_group
-     print "KIT TYPE      "kit_type
-     print "KIT VERSION   "kit_version
-     print "KIT ORIGIN    "kit_origin
-     print "KIT TOPDIR    "kit_topdir
-     print "KIT SIZE      "kit_size
-     print "KIT MD5SUM    "kit_md5sum
+     print "BEGIN     TLP"tlp_format
+     print "NAME      "kit_name
+     print "ORIG      "kit_origin
+     print "NODE      "process_node
+     print "MVER      "model_vers
+     print "CATG      "kit_group
+     print "TYPE      "kit_type
+     print "SDIR      "kit_srcdir
+     print "SIZE      "kit_size
+     print "MD5S      "kit_md5sum
+     print "END"
   }
-  process_dir = kit_node"/"kit_pdk
-  category_dir = kit_node"/"kit_pdk"/"kit_group"/"kit_type
-  "basename "FILENAME" .releaseNote" | getline BASEFILE
-  "basename "BASEFILE" .tlp" | getline kit_SKU
+  process_dir = process_node"/"model_vers
+  category_dir = process_node"/"model_vers"/"kit_group"/"kit_type
+  "basename "FILENAME" .dts" | getline BASEFILE
+  "basename "BASEFILE" .tlp" | getline kit_name
   tlp_install_dir = tlp_install_root"/"category_dir
 
-  if (system("test -e "tlp_install_dir"/"kit_topdir) == 0) {
-     if (system("test -f "tlp_install_dir"/"kit_topdir"/"kit_SKU".releaseNote") == 0) {
-        WARNING("Skip install '"kit_SKU"' (already installed)")
+  if (system("test -e "tlp_install_dir"/"kit_srcdir) == 0) {
+     if (system("test -f "tlp_install_dir"/"kit_srcdir"/"kit_name".dts") == 0) {
+        WARNING("Skip install '"kit_name"' (already installed)")
         tlp_skipped++
         kit_already_exist = 1
      } else if (tlp_package_type == "FULL") {
-        ERROR("Kit directory '"kit_topdir"' already exist before installing full kit package.")
+        ERROR("Kit directory '"kit_srcdir"' already exist before installing full kit package.")
         tlp_conflict++
         kit_already_exist = 1
      } else {
-        print "    : Directory '"tlp_install_dir"/"kit_topdir"' already exist."
+        print "    : Directory '"tlp_install_dir"/"kit_srcdir"' already exist."
      }
   } else {
      if (tlp_package_type == "PATCH") {
-        WARNING("Base directory '"kit_topdir"' is missing for patch package.")
+        WARNING("Base directory '"kit_srcdir"' is missing for patch package.")
      }
   }
   if (kit_already_exist) {
   } else if (kit_require_fail) {
-     ERROR("Can not install '"kit_SKU"' (dependency fail)")
+     ERROR("Can not install '"kit_name"' (dependency fail)")
      tlp_reqs_err++
   } else if (pkgs_file_missing) {
-     ERROR("Can not install '"kit_SKU"' (missing pacakge)")
+     ERROR("Can not install '"kit_name"' (missing pacakge)")
      tlp_pkgs_err++
   } else {
-     system("mkdir -p "tlp_install_dir"/"kit_topdir)
-     system("cp -f "FILENAME" "tlp_install_dir"/"kit_topdir"/"kit_SKU".releaseNote")
-     system("ln -fs ../"category_dir"/"kit_topdir"/"kit_SKU".releaseNote "tlp_install_root"/.tlp_install/"kit_SKU".tlp")
-     system("echo \"`date +%Y%m%d_%H%M%S` `whoami` % tlp_install "kit_SKU"\t;"FILENAME"\" >> "tlp_install_summary)
+     system("mkdir -p "tlp_install_dir"/"kit_srcdir)
+     system("cp -f "FILENAME" "tlp_install_dir"/"kit_srcdir"/"kit_name".dts")
+     system("ln -fs ../"category_dir"/"kit_srcdir"/"kit_name".dts "tlp_install_root"/.tlp_install/"kit_name".tlp")
+     system("echo \"`date +%Y%m%d_%H%M%S` `whoami` % tlp_install "kit_name"\t;"FILENAME"\" >> "tlp_install_summary)
      if (i in pkgs_base) {
          tlp_pkgs_base = tlp_pkgs_config"/"pkgs_base[i]".tlp"
          print "INFO: Installing base kit '"tlp_pkgs_base"' ..."
@@ -245,7 +248,7 @@ ENDFILE {
         print "INFO: Unpacking file '"tlp_pkgs_file"' ..."
         system("gunzip -c "tlp_pkgs_file" | (cd "tlp_install_dir"; tar xvf -)")
      }
-     print kit_SKU >> tlp_install_root"/"process_dir"/.tlp_packages"
+     print kit_name >> tlp_install_root"/"process_dir"/.tlp_packages"
      tlp_created++
   }
   print ""
@@ -261,7 +264,7 @@ END {
   print "[tlp_install]: Total "tlp_skipped"/"tlp_total" kits are skipped. (already exist)"
   }
   if (tlp_conflict) {
-  print "[tlp_install]: Total "tlp_conflict"/"tlp_total" kits have conflict topdir. (error)"
+  print "[tlp_install]: Total "tlp_conflict"/"tlp_total" kits have conflict root. (error)"
   }
   if (tlp_reqs_err) {
   print "[tlp_install]: Total "tlp_reqs_err"/"tlp_total" kits require check fail. (error)"
@@ -272,3 +275,4 @@ END {
   print "------------------------------------------------------------------"
   print "\033[0m"
 }
+ 

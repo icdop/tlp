@@ -1,21 +1,21 @@
 # TLP utility testcase 1
 
   This testcase will guide you through the tlp release note validation prcocess
-by importing tlp file into releaseNotes/ directory. (make import)
-  Then you can start install the collateral to the techLib/ directory using the
+by importing tlp file into dataSheets/ directory. (make import)
+  Then you can start install the designkit to the techLib/ directory using the
 interactive installation method. (make install)
   At the end you can use the package log stored in the techLib to reproduce the
 installation proceduce and make sure the result are consistent. (make bundle)
 
-Step 0 - Check the collateral package and tlp config file :
+Step 0 - Check the designkit package and tlp config file :
 
 	% make env
 
 	==========================================
-	TECHLIB_HOME = techLib
+	TECHLIB_ROOT = techLib
 	TECHLIB_CFGS = configs
 	TECHLIB_PKGS = packages
-	TECHLIB_RELN = releaseNotes
+	TECHLIB_DOCS = dataSheets
 	==========================================
 
 
@@ -48,17 +48,17 @@ Step 0 - Check the collateral package and tlp config file :
 	STDCELL_lib222_7t_base_e.2.0-3.tgz
 
 ***
-Step 1 - Import the tlp configuration file to releaseNotes directory :
+Step 1 - Import the tlp configuration file to dataSheets directory :
 
 	==========================
 	% make import
 	==========================
-	CMDS: tlp_import --packageSrcDir packages --releaseNoteDir releaseNotes --targetLibDir techLib
+	CMDS: tlp_import --packageSrcDir packages --releaseNoteDir dataSheets --targetLibDir techLib
 	TIME: @20171109_015748 BEGIN tlp_import
 	[tlp_import]: BEGIN 
 	[1]: Reading packages/GPIO_lib222_e.0.6.1.tlp
 	    : Package file - packages/GPIO_lib222_e.0.6.1.tgz
-	    : Creating 'T28HPC/0p5/HIP/GPIO/ip222_gpio_r061/GPIO_lib222_e.0.6.1.releaseNote' (r0.6.1)
+	    : Creating 'T28HPC/0p5/HIP/GPIO/ip222_gpio_r061/GPIO_lib222_e.0.6.1.dts' (r0.6.1)
 
 	[2]: Reading packages/GPIO_lib222_e.0.6.tlp
 	ERROR: Pacakge GPIO_lib222_e.0.6.tgz can not be found in package source.    
@@ -66,7 +66,7 @@ Step 1 - Import the tlp configuration file to releaseNotes directory :
 
 	[3]: Reading packages/MEMORY_lib222_2PRF_e.0.6.tlp
 	    : Package file - packages/MEMORY_lib222_2PRF_e.0.6.tgz
-	    : Creating 'T28HPC/0p5/FIP/MEMORY/mem222_2prf_r061/MEMORY_lib222_2PRF_e.0.6.releaseNote' (r0.6.1)
+	    : Creating 'T28HPC/0p5/FIP/MEMORY/mem222_2prf_r061/MEMORY_lib222_2PRF_e.0.6.dts' (r0.6.1)
 
 	.....
 	.....
@@ -74,7 +74,7 @@ Step 1 - Import the tlp configuration file to releaseNotes directory :
 	    : Package file - packages/STDCELL_lib222_7t_base_e.2.0-1.tgz
 	    : Package file - packages/STDCELL_lib222_7t_base_e.2.0-2.tgz
 	    : Package file - packages/STDCELL_lib222_7t_base_e.2.0-3.tgz
-	    : Creating 'T28HPC/0p5/FIP/STDCELL/lib222_7t_base_e20/STDCELL_lib222_7t_base_e.2.0.releaseNote' (7t_base_e.2.0)
+	    : Creating 'T28HPC/0p5/FIP/STDCELL/lib222_7t_base_e20/STDCELL_lib222_7t_base_e.2.0.dts' (7t_base_e.2.0)
 	
 	------------------------------------------------------------------
 	SUMMARY: Total 10/11 tlp release notes are created.
@@ -87,46 +87,46 @@ Step 1 - Import the tlp configuration file to releaseNotes directory :
 
 
 	==========================
-	% tree releaseNotes
+	% tree dataSheets
 	==========================
 
-	releaseNotes/
+	dataSheets/
 	└── T28HPC
 	    └── 0p5
 	        ├── FDK
 	        │   ├── ADF
 	        │   │   └── adf222_r061
-	        │   │       └── PT28HPCADF_r0.6.1.releaseNote
+	        │   │       └── PT28HPCADF_r0.6.1.dts
 	        │   ├── CTK
 	        │   │   └── ctk222_r061
-	        │   │       └── PT28HPCCTK_r0.6.1.releaseNote
+	        │   │       └── PT28HPCCTK_r0.6.1.dts
 	        │   └── PDK
 	        │       ├── pdk222_r061
-	        │       │   └── PT28HPCPDK_r0.6.1.releaseNote
+	        │       │   └── PT28HPCPDK_r0.6.1.dts
 	        │       ├── pdk222_r101
-	        │       │   └── PT28HPCPDK_r1.0.1.releaseNote
+	        │       │   └── PT28HPCPDK_r1.0.1.dts
 	        │       ├── pdk222_r10HF4
-	        │       │   └── PT28HPCPDK_r1.0HF4.releaseNote
+	        │       │   └── PT28HPCPDK_r1.0HF4.dts
 	        │       └── pdk222_r10HF7
-	        │           └── PT28HPCPDK_r1.0hf7.releaseNote
+	        │           └── PT28HPCPDK_r1.0hf7.dts
 	        ├── FIP
 	        │   ├── MEMORY
 	        │   │   └── mem222_2prf_r061
-        	│   │       └── MEMORY_lib222_2PRF_e.0.6.releaseNote
+        	│   │       └── MEMORY_lib222_2PRF_e.0.6.dts
 	        │   └── STDCELL
 	        │       ├── lib222_6t_base_e10
-	        │       │   └── STDCELL_lib222_6t_base_e.1.0.releaseNote
+	        │       │   └── STDCELL_lib222_6t_base_e.1.0.dts
 	        │       └── lib222_7t_base_e20
-	        │           └── STDCELL_lib222_7t_base_e.2.0.releaseNote
+	        │           └── STDCELL_lib222_7t_base_e.2.0.dts
 	        └── HIP
 	            └── GPIO
 	                └── ip222_gpio_r061
-        	            └── GPIO_lib222_e.0.6.1.releaseNote
+        	            └── GPIO_lib222_e.0.6.1.dts
 
 	21 directories, 10 files
 
 ***
-Step 2 - Install collateral package refer to releaseNotes directory :
+Step 2 - Install designkit package refer to dataSheets directory :
 
 	==========================
 	% make install           <= enter interactive mode if there is no input file specifed
@@ -152,7 +152,7 @@ Step 2 - Install collateral package refer to releaseNotes directory :
 	
 	==============================================================
 	INFO: Current releaseNote directory: T28HPC/0p5/FDK
-	releaseNotes/T28HPC/0p5/FDK
+	dataSheets/T28HPC/0p5/FDK
 	├── ADF
 	│   └── adf222_r061
 	├── CTK
@@ -166,7 +166,7 @@ Step 2 - Install collateral package refer to releaseNotes directory :
 	9 directories, 6 files
 	==============================================================
 	INFO: Please select the following packages to be installed :
-	[ releaseNotes/T28HPC/0p5/FDK ]:
+	[ dataSheets/T28HPC/0p5/FDK ]:
 	  0) Go back to previous selection menu..
 		1) PT28HPCADF_r0.6.1	(adf222_r061)
 		2) PT28HPCCTK_r0.6.1	(ctk222_r061)
@@ -177,8 +177,8 @@ Step 2 - Install collateral package refer to releaseNotes directory :
 	  q) quit..
 	INPUT: Select ? 1
 	========================================================
-	INFO: Install kit 'releaseNotes/T28HPC/0p5/FDK/./ADF/adf222_r061/PT28HPCADF_r0.6.1.releaseNote' ..
-	[1]: Reading releaseNotes/T28HPC/0p5/FDK/./ADF/adf222_r061/PT28HPCADF_r0.6.1.releaseNote
+	INFO: Install kit 'dataSheets/T28HPC/0p5/FDK/./ADF/adf222_r061/PT28HPCADF_r0.6.1.dts' ..
+	[1]: Reading dataSheets/T28HPC/0p5/FDK/./ADF/adf222_r061/PT28HPCADF_r0.6.1.dts
 	ERROR: required kit dir 'T28HPC/0p5/FDK/PDK/pdk222_r061' has not been installed yet.
 	ERROR: Skip install 'PT28HPCADF_r0.6.1' (dependency fail)
 
@@ -187,7 +187,7 @@ Step 2 - Install collateral package refer to releaseNotes directory :
 	------------------------------------------------------------------
 	==============================================================
 	INFO: Please select the following packages to be installed :
-	[ releaseNotes/T28HPC/0p5/FDK ]:
+	[ dataSheets/T28HPC/0p5/FDK ]:
 	  0) Go back to previous selection menu..
 		1) PT28HPCADF_r0.6.1
 		2) PT28HPCCTK_r0.6.1
@@ -198,8 +198,8 @@ Step 2 - Install collateral package refer to releaseNotes directory :
 	  q) quit..
 	INPUT: Select ? 3 2 1
 	========================================================
-	INFO: Install kit 'releaseNotes/T28HPC/0p5/FDK/./PDK/pdk222_r061/PT28HPCPDK_r0.6.1.releaseNote' ..
-	[1]: Reading releaseNotes/T28HPC/0p5/FDK/./PDK/pdk222_r061/PT28HPCPDK_r0.6.1.releaseNote
+	INFO: Install kit 'dataSheets/T28HPC/0p5/FDK/./PDK/pdk222_r061/PT28HPCPDK_r0.6.1.dts' ..
+	[1]: Reading dataSheets/T28HPC/0p5/FDK/./PDK/pdk222_r061/PT28HPCPDK_r0.6.1.dts
 	    : Package file - packages/PT28HPCPDK_r0.6.1.tgz
 	INFO: Unpacking file 'packages/PT28HPCPDK_r0.6.1.tgz' ...
 	pdk222_r061/
@@ -208,8 +208,8 @@ Step 2 - Install collateral package refer to releaseNotes directory :
 	------------------------------------------------------------------
 	SUMMARY: Total 1/1 kits are installed.
 	------------------------------------------------------------------
-	INFO: Install kit 'releaseNotes/T28HPC/0p5/FDK/./CTK/ctk222_r061/PT28HPCCTK_r0.6.1.releaseNote' ..
-	[1]: Reading releaseNotes/T28HPC/0p5/FDK/./CTK/ctk222_r061/PT28HPCCTK_r0.6.1.releaseNote
+	INFO: Install kit 'dataSheets/T28HPC/0p5/FDK/./CTK/ctk222_r061/PT28HPCCTK_r0.6.1.dts' ..
+	[1]: Reading dataSheets/T28HPC/0p5/FDK/./CTK/ctk222_r061/PT28HPCCTK_r0.6.1.dts
 	    : Package file - packages/PT28HPCCTK_r0.6.1.tgz
 	INFO: Unpacking file 'packages/PT28HPCCTK_r0.6.1.tgz' ...
 	ctk222_r061/
@@ -218,8 +218,8 @@ Step 2 - Install collateral package refer to releaseNotes directory :
 	------------------------------------------------------------------
 	SUMMARY: Total 1/1 kits are installed.
 	------------------------------------------------------------------
-	INFO: Install kit 'releaseNotes/T28HPC/0p5/FDK/./ADF/adf222_r061/PT28HPCADF_r0.6.1.releaseNote' ..
-	[1]: Reading releaseNotes/T28HPC/0p5/FDK/./ADF/adf222_r061/PT28HPCADF_r0.6.1.releaseNote
+	INFO: Install kit 'dataSheets/T28HPC/0p5/FDK/./ADF/adf222_r061/PT28HPCADF_r0.6.1.dts' ..
+	[1]: Reading dataSheets/T28HPC/0p5/FDK/./ADF/adf222_r061/PT28HPCADF_r0.6.1.dts
 	    : Package file - packages/PT28HPCADF_r0.6.1.tgz
 	INFO: Unpacking file 'packages/PT28HPCADF_r0.6.1.tgz' ...
 	adf222_r061/
@@ -245,7 +245,7 @@ Step 2 - Install collateral package refer to releaseNotes directory :
 
 	==============================================================
 	INFO: Please select the following packages to be installed :
-	[ releaseNotes/ ]:
+	[ dataSheets/ ]:
 	  0) Go back to previous selection menu..
 		1) PT28HPCADF_r0.6.1
 		2) PT28HPCCTK_r0.6.1
@@ -262,7 +262,7 @@ Step 2 - Install collateral package refer to releaseNotes directory :
 	.....
 	==============================================================
 	INFO: Please select the following packages to be installed :
-	[ releaseNotes/ ]:
+	[ dataSheets/ ]:
 	  0) Go back to previous selection menu..
 		.....
 	  q) quit..
@@ -293,12 +293,12 @@ Step 2 - Install collateral package refer to releaseNotes directory :
 
 	% cat techLib/.tlp_install.log
 
-	20171109024620 hungchun % tlp_install releaseNotes/T28HPC/0p5/FDK/./PDK/pdk222_r061/PT28HPCPDK_r0.6.1.releaseNote
-	20171109024622 hungchun % tlp_install releaseNotes/T28HPC/0p5/FDK/./CTK/ctk222_r061/PT28HPCCTK_r0.6.1.releaseNote
-	20171109024623 hungchun % tlp_install releaseNotes/T28HPC/0p5/FDK/./ADF/adf222_r061/PT28HPCADF_r0.6.1.releaseNote
-	20171109024653 hungchun % tlp_install releaseNotes/T28HPC/0p5/FIP/STDCELL/lib222_6t_base_e10/STDCELL_lib222_6t_base_e.1.0.releaseNote
-	20171109024703 hungchun % tlp_install releaseNotes/T28HPC/0p5/FIP/MEMORY/mem222_2prf_r061/MEMORY_lib222_2PRF_e.0.6.releaseNote
-	20171109024706 hungchun % tlp_install releaseNotes/T28HPC/0p5/HIP/GPIO/ip222_gpio_r061/GPIO_lib222_e.0.6.1.releaseNote
+	20171109024620 toolsadm % tlp_install dataSheets/T28HPC/0p5/FDK/./PDK/pdk222_r061/PT28HPCPDK_r0.6.1.dts
+	20171109024622 toolsadm % tlp_install dataSheets/T28HPC/0p5/FDK/./CTK/ctk222_r061/PT28HPCCTK_r0.6.1.dts
+	20171109024623 toolsadm % tlp_install dataSheets/T28HPC/0p5/FDK/./ADF/adf222_r061/PT28HPCADF_r0.6.1.dts
+	20171109024653 toolsadm % tlp_install dataSheets/T28HPC/0p5/FIP/STDCELL/lib222_6t_base_e10/STDCELL_lib222_6t_base_e.1.0.dts
+	20171109024703 toolsadm % tlp_install dataSheets/T28HPC/0p5/FIP/MEMORY/mem222_2prf_r061/MEMORY_lib222_2PRF_e.0.6.dts
+	20171109024706 toolsadm % tlp_install dataSheets/T28HPC/0p5/HIP/GPIO/ip222_gpio_r061/GPIO_lib222_e.0.6.1.dts
 
 ***
 Step 3 - Create bundleLib from the bundle List:

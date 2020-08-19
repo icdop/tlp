@@ -1,15 +1,14 @@
-#!/bin/csh -f
-#set verbose=1
+#!/bin/csh -f set verbose=1
 set prog = $0:t
 if (($1 == "-h")||($1 == "--help")) then
    echo "Usage: $prog <options> <pacakge.tlp>"
    echo "  --packageSrcDir   <packageSourceDir>	(TECHLIB_PKGS)"
-   echo "  --releaseNoteDir  <releaseNoteDir>	(TECHLIB_RELN)"
-   echo "  --targetLibDir    <techLibDir>  	(TECHLIB_HOME)"
+   echo "  --dataSheetDir    <dataSheetDir>	(TECHLIB_DOCS)"
+   echo "  --targetLibDir    <techLibDir>  	(TECHLIB_ROOT)"
    echo "  --bundleFile      <BundleListFile>"
-   echo "  --selectByCategory  <NODE/PDK/GROUP/TYPE>"
+   echo "  --selectByCategory  <NODE/MVER/CATG/TYPE>"
    echo "Description:"
-   echo "  Install collateral package base on package.tlp file."
+   echo "  Install designkit package base on package.tlp file."
    echo ""
    exit -1
 endif

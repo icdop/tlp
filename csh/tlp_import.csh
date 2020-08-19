@@ -5,10 +5,10 @@ if (($1 == "-h")||($1 == "--help")) then
    echo "Usage: $prog <options>"
    echo "  --packageCfgDir   <packageConfigDir>  (TECHLIB_CFGS)"
    echo "  --packageSrcDir   <packageSourceDir>  (TECHLIB_PKGS)"
-   echo "  --releaseNoteDir  <releaseNoteDir>    (TECHLIB_RELN)"
-   echo "  --selectByCategory  <NODE/PDK/GROUP/TYPE>"
+   echo "  --dataSheetDir    <dataSheetDir>      (TECHLIB_DOCS)"
+   echo "  --selectByCategory  <NODE/MVER/CATG/TYPE>"
    echo "Description:"
-   echo "  copy tlp config file to releaseNotes directory and sort by kit category"
+   echo "  copy tlp config file to dataSheets directory and sort by kit category"
    echo ""
    exit -1
 endif
