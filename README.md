@@ -7,14 +7,14 @@
 	TECHLIB_ROOT  	- target techLib directory (where you plan to install)
 
 Directory:
-
+<pre>
 	$(TECHLIB_ROOT)/
 		+-- $(NODE)
 			+--- $(MVER)
 				+-- $(GROUP)
-					+----- $(NAME)
-
+</pre>					+----- $(NAME)
 Example:
+<pre>
 	techLib/
 		+-- T28HPC/
 			+----- 0p5/
@@ -26,6 +26,7 @@ Example:
 				|	+----- PDK
 				+----- FIP
 					+----- STDCELL
+</pre>
 
 ## Step 0：Prepare TechLib Package definition file:
 
