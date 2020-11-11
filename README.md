@@ -12,7 +12,8 @@ Directory:
 		+-- $(NODE)
 			+--- $(MVER)
 				+-- $(GROUP)
-</pre>					+----- $(NAME)
+					+----- $(NAME)
+</pre>
 Example:
 <pre>
 	techLib/
